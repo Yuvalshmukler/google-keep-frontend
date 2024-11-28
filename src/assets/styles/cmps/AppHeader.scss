@@ -1,0 +1,93 @@
+.app-header {
+    display: grid;
+    position: fixed;
+    width: 100%;
+    grid-template-columns: 1fr 6fr 0.5fr;
+    min-height: 3.5rem;
+    border-bottom: 1px solid #dadce0;
+    // background-color:gr;
+    padding: rem(8px) rem(21px);
+    min-width: min-content;
+
+    .menu-logo-container {
+        display: flex;
+
+        .menu {
+            color: rgb(95, 99, 104);
+            // padding: rem(12px);
+            width: rem(25px);
+            margin-inline-end: rem(15px);
+
+        }
+
+        .logo {
+            display: flex;
+            font-weight: bold;
+            margin-inline-end: 2em;
+            align-items: center;
+
+            img {
+                width: rem(40px);
+                margin-inline-end: rem(8px);
+
+            }
+
+            h1 {
+                color: #626262;
+                font-weight: 400;
+                font-size: rem(22px);
+                line-height: 28px;
+                margin: 0;
+            }
+        }
+    }
+
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1em;
+
+        font-size: .8em;
+
+
+
+        .login-link {
+            margin-inline-start: auto;
+        }
+
+        button {
+            margin-inline-end: 0;
+        }
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        margin-inline-start: auto;
+
+
+        .score {
+            padding: 8px;
+            background-color: $clr2;
+            border-radius: 50%;
+            margin: 10px;
+
+            color: $clr6;
+        }
+
+        img {
+            width: 32px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+
+        .btn-link {
+            color: $clr2;
+        }
+    }
+
+
+
+}
