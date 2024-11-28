@@ -13,27 +13,18 @@
 
 // pages
 @import "RootCmp";
-
 @import "pages/AboutUs";
-// @import "pages/HomePage";
 @import "pages/NoteIndex";
-@import "pages/ReviewIndex";
 @import "pages/UserDetails";
-@import "pages/TaskDetails";
 @import "pages/LoginSignup";
 
 // Components
-@import "cmps/list";
-@import "cmps/preview";
-
 @import "cmps/AppHeader";
 @import "cmps/AppFooter";
 @import "cmps/HeaderSearch";
 @import "cmps/UserMsg";
 
-@import "cmps/CarFilter";
-@import "cmps/ReviewEdit";
-@import "cmps/ReviewList";
+@import "cmps/NoteFilter";
 @import "cmps/MenuBar";
-// @import "cmps/CarList";
-// @import "cmps/CarPreview";
+@import "cmps/NoteList";
+@import "cmps/NotePreview";

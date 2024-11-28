@@ -15,12 +15,9 @@ export function RootCmp() {
     return (
         <div className="main-container">
             <AppHeader />
-            <MenuBar/>
-            {/* <UserMsg /> */}
-
+            <MenuBar />
             <main>
                 <Routes>
-                    {/* <Route path="" element={<HomePage />} /> */}
                     <Route path="" element={<NoteIndex />} />
                     {/* <Route path="about" element={<AboutUs />}>
                         <Route path="team" element={<AboutTeam />} />
@@ -28,8 +25,6 @@ export function RootCmp() {
                     </Route> */}
                     {/* <Route path="car/:carId" element={<CarDetails />} /> */}
                     {/* <Route path="user/:id" element={<UserDetails />} /> */}
-                    {/* <Route path="review" element={<ReviewIndex />} /> */}
-                    {/* <Route path="chat" element={<ChatApp />} /> */}
                     {/* <Route path="admin" element={<AdminIndex />} /> */}
                     {/* <Route path="login" element={<LoginSignup />}>
                         <Route index element={<Login />} />
