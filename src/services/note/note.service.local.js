@@ -92,13 +92,16 @@ function createNotes() {
     var notes = storageService.getFromLocal(STORAGE_KEY)
     if (!notes) {
         notes = [
-            { id: 'n101', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(50) } },
-            { id: 'n102', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(20) } },
-            { id: 'n103', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(5) } },
-            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(75) } },
-            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(40) } },
-            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(10)} },
-            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(69)} },
+            { id: 'n101', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: 'pink' }, info: { title:"This it title",txt: makeLorem(50) } },
+            { id: 'n102', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: 'pink' }, info: { title:"This it title",txt: makeLorem(20) } },
+            { id: 'n103', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: 'pink' }, info: { title:"This it title",txt: makeLorem(5) } },
+            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: 'pink' }, info: { title:"This it title",txt: makeLorem(35) } },
+            { id: 'n105', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: 'pink' }, info: { title:"This it title",txt: makeLorem(40) } },
+            { id: 'n106', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { title:"This it title",txt: makeLorem(10)} },
+            { id: 'n107', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title:"This it title",txt: makeLorem(69)} },
+            { id: 'n10', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title:"This it title",txt: makeLorem(24)} },
+            { id: 'n108', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title:"This it title",txt: makeLorem(3)} },
+            { id: 'n10100', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title:"This it title",txt: makeLorem(59)} },
             // { id: 'n102', createdAt: 1112223, type: 'NoteImg', isPinned: false, info: { url: 'http://some-img/me', title: 'Bobi and Me' }, style: { backgroundColor: '#00d' } },
             // { id: 'n103', createdAt: 1112224, type: 'NoteTodos', isPinned: false, info: { title: 'Get my stuff together', todos: [{ txt: 'Driving license', doneAt: null }, { txt: 'Coding power', doneAt: 187111111 }] } }]
     ]}

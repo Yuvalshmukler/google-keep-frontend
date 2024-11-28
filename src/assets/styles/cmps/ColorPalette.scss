@@ -1,0 +1,141 @@
+.ColorPalette {
+    position: absolute;
+    bottom: rem(-94px);
+    right: rem(-58px);
+    height: rem(97px);
+    width: rem(416px);
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+    padding: rem(10px);
+    background-color: white;
+
+    button {
+        border-radius: 50%;
+        height: 29px;
+        width: 29px;
+        margin-inline-end: 4px;
+    }
+
+    section:first-of-type {
+        // border-bottom: 1fr;
+        height: 37px;
+        border-bottom: 1px solid #dadce0;
+
+        button:nth-child(1) {
+            background-color: rgb(235, 152, 217);
+        }
+
+        button:nth-child(2) {
+            background-color: rgb(232, 156, 102);
+        }
+
+        button:nth-child(2) {
+            background-color: rgb(222, 224, 158);
+        }
+
+        button:nth-child(3) {
+            background-color: rgb(183, 225, 162);
+        }
+
+        button:nth-child(4) {
+            background-color: rgb(161, 232, 229);
+        }
+
+        button:nth-child(5) {
+            background-color: rgb(143, 178, 189);
+        }
+
+        button:nth-child(6) {
+            background-color: rgb(191, 149, 188);
+        }
+
+        button:nth-child(7) {
+            background-color: rgb(210, 192, 203);
+        }
+
+        button:nth-child(8) {
+            background-color: rgb(211, 223, 199);
+        }
+
+        button:nth-child(9) {
+            background-color: rgb(224, 224, 225);
+        }
+
+        button:nth-child(10) {
+            background-color: blue;
+        }
+
+        button:nth-child(11) {
+            background-color: blue;
+        }
+
+        button:nth-child(12) {
+            background-color: blue;
+        }
+    }
+
+    section:nth-of-type(2) {
+        border-bottom: 1px solid #dadce0;
+        padding: 3px;
+        margin-block-start:4px;
+        border: none;
+        button {
+            height: 36px;
+            width: 35px;
+        }
+
+        button:nth-child(1) {
+            background-color: rgb(235, 152, 217);
+        }
+
+        button:nth-child(2) {
+            background-color: rgb(232, 156, 102);
+        }
+
+        button:nth-child(2) {
+            background-color: rgb(222, 224, 158);
+        }
+
+        button:nth-child(3) {
+            background-color: rgb(183, 225, 162);
+        }
+
+        button:nth-child(4) {
+            background-color: rgb(161, 232, 229);
+        }
+
+        button:nth-child(5) {
+            background-color: rgb(143, 178, 189);
+        }
+
+        button:nth-child(6) {
+            background-color: rgb(191, 149, 188);
+        }
+
+        button:nth-child(7) {
+            background-color: rgb(210, 192, 203);
+        }
+
+        button:nth-child(8) {
+            background-color: rgb(211, 223, 199);
+        }
+
+        button:nth-child(9) {
+            background-color: rgb(224, 224, 225);
+        }
+
+        button:nth-child(10) {
+            background-color: blue;
+        }
+
+        button:nth-child(11) {
+            background-color: blue;
+        }
+
+        button:nth-child(12) {
+            background-color: blue;
+        }
+    }
+}

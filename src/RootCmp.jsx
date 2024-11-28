@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NoteIndex } from './pages/NoteIndex.jsx'
 import { MenuBar } from './cmps/MenuBar.jsx'
 

@@ -1,8 +1,29 @@
 .note-list {
     display: grid;
-    grid-template-columns: repeat(6, minmax(230px, 1fr));
-    gap: 1rem;
-
+    grid-template-columns: repeat(7, minmax(240px, 1fr));
+    // display: flex;
+    //    flex-wrap: wrap;
+    // display: inline-block;
+    font-family: Roboto Regular;
+    gap: 15px;
+    // font-size: 15px;
+    .preview {
+        background-color: rgb(222, 220, 220);
+        width: 250px;
+        font-size: rem(15px);
+    }
+    h2{
+        font-size: rem(17px);
+        font-weight: 400;
+        color: #000000;
+        // bold
+    }
+    // display: flex;
+    // flex-direction: row;
+    // gap: 1rem;
+    // flex-wrap:wrap;
+    // grid-auto-rows: auto;
+    // grid-template-rows: masonry;
     // li {
     //     display: grid;
     //     grid-template-columns: max-content auto;

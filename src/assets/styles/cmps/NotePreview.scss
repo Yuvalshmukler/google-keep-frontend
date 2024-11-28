@@ -7,4 +7,14 @@
     min-height: rem(100px);
     border-radius: rem(10px);
     padding: rem(12px) rem(16px);
+    // max-width: rem(241px);
+    height: max-content;
+    gap: 30px;
+    position: relative;
+
+    section:nth-of-type(2){
+        // background-color: antiquewhite;
+        margin-block-end: rem(40px);
+    }
+        
 }

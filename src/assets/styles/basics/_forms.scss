@@ -1,17 +1,10 @@
 button {
-	border: 0;
-	background-color: $clr1;
-	color: whitesmoke;
-	padding: 5px 10px;
-	margin: 5px;
+	background-color: unset;
+	border: none;
 	cursor: pointer;
 }
 
-form > * {
-	display: block;
-	// width: 200px;
-	margin: 10px 0px;
-}
+form>* {}
 
 .btn-link {
 	border: 0;
@@ -19,6 +12,5 @@ form > * {
 	// text-decoration: underline;
 	transition: 0.5s;
 }
-.btn-link:hover {
-	background-color: $clr1;
-}
+
+.btn-link:hover {}
