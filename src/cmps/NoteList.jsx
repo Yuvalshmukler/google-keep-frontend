@@ -12,7 +12,7 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote }) {
     }
 
     return <section>
-        <ul className="list">
+        <ul className="note-list">
             {notes.map(note =>
                 <li key={note.id}>
                     <NotePreview note={note}/>

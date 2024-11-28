@@ -1,6 +1,6 @@
 
 import { storageService } from '../async-storage.service'
-import { makeId } from '../util.service'
+import { makeId ,makeLorem} from '../util.service'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'note'
@@ -92,10 +92,13 @@ function createNotes() {
     var notes = storageService.getFromLocal(STORAGE_KEY)
     if (!notes) {
         notes = [
-            { id: 'n101', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: 'Fullstack Me Baby!' } },
-            { id: 'n102', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: 'Fullstack Me Baby!' } },
-            { id: 'n103', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: 'Fullstack Me Baby!' } },
-            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: 'Fullstack Me Baby!' } },
+            { id: 'n101', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(50) } },
+            { id: 'n102', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(20) } },
+            { id: 'n103', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(5) } },
+            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(75) } },
+            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(40) } },
+            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(10)} },
+            { id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { txt: makeLorem(69)} },
             // { id: 'n102', createdAt: 1112223, type: 'NoteImg', isPinned: false, info: { url: 'http://some-img/me', title: 'Bobi and Me' }, style: { backgroundColor: '#00d' } },
             // { id: 'n103', createdAt: 1112224, type: 'NoteTodos', isPinned: false, info: { title: 'Get my stuff together', todos: [{ txt: 'Driving license', doneAt: null }, { txt: 'Coding power', doneAt: 187111111 }] } }]
     ]}
