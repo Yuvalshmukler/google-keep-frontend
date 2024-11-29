@@ -11,12 +11,15 @@ import { LoginSignup } from './pages/LoginSignup.jsx'
 import { Login } from './pages/Login.jsx'
 import { Signup } from './pages/Signup.jsx'
 import { NoteTrash } from './cmps/NoteTrash.jsx';
+import { AddNoteInput } from './cmps/addNoteInput.jsx';
+
 export function RootCmp() {
     return (
         <div className="main-container">
             <AppHeader />
             <MenuBar />
-            <main>
+            <main className='inner-main-container'>
+                <AddNoteInput />
                 <Routes>
                     <Route path="" element={<NoteIndex />} />
                     <Route path="archive" element={<NoteArchive />} />

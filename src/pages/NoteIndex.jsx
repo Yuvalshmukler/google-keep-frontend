@@ -46,7 +46,9 @@ export function NoteIndex() {
             showErrorMsg('Cannot add note')
         }
     }
-
+    function getNotes(isPinned) {
+        return notes.filter(note => note.isPinned === isPinned)
+    }
     async function onUpdateNote(note) {
         console.log(note);
 
@@ -64,19 +66,30 @@ export function NoteIndex() {
     return (
 
         <main className="note-index">
-            <header>
-                <h2>Notes</h2>
-                {userService.getLoggedinUser() && <button onClick={onAddNote}>Add a Note</button>}
-            </header>
-            {!isLoading ? <NoteList
-                notes={notes}
-                onRemoveNote={onRemoveNote}
-                onUpdateNote={onUpdateNote}
-            /> :
-                <div>
-                    Loading...
-                </div>
-            }
+            <section>
+                <h5>Pinned</h5>
+                {!isLoading ? <NoteList
+                    notes={getNotes(true)}
+                    onRemoveNote={onRemoveNote}
+                    onUpdateNote={onUpdateNote}
+                /> :
+                    <div>
+                        Loading...
+                    </div>
+                }
+            </section>
+            <section>
+                <h5>Others</h5>
+                {!isLoading ? <NoteList
+                    notes={getNotes(false)}
+                    onRemoveNote={onRemoveNote}
+                    onUpdateNote={onUpdateNote}
+                /> :
+                    <div>
+                        Loading...
+                    </div>
+                }
+            </section>
         </main>
     )
 }

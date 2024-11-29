@@ -1,0 +1,23 @@
+.add-note-input {
+    display: flex;
+    align-self: center;
+
+    section {
+        padding-inline: rem(17px);
+        padding-block: rem(9px);
+        -webkit-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
+        border-radius: 8px;
+        min-width: rem(600px);
+
+    }
+
+    .add-note-narrow {
+        min-height: rem(44px);
+    }
+
+    .add-note-expand {
+        min-height: rem(135px);
+    }
+}
