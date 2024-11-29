@@ -10,14 +10,20 @@ export const noteService = {
     getById,
     save,
     remove,
-    addCarMsg
+    addCarMsg,
+    getDefaultFilter
 }
 window.cs = noteService
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = getDefaultFilter()) {
     var notes = await storageService.query(STORAGE_KEY)
-    // const { txt, minSpeed, maxPrice, sortField, sortDir } = filterBy
+    console.log(notes);
+    console.log(filterBy);
+    
+    // const { createdAt, type, isArchive, isPinned, sortField, sortDir } = filterBy
 
+    notes = notes.filter(note => note.isArchive === filterBy.isArchive)
+    notes = notes.filter(note => note.isBin === filterBy.isBin)
     // if (txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
     //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
@@ -79,21 +85,32 @@ async function addCarMsg(carId, txt) {
     return msg
 }
 
+function getDefaultFilter() {
+    return {
+        createdAt: '',
+        type: '',
+        isArchive: false,
+        isBin: false,
+        isPinned: false,
+        sortField: '',
+        sortDir: '',
+    }
+}
 
 function createNotes() {
     var notes = storageService.getFromLocal(STORAGE_KEY)
     if (!notes) {
         notes = [
-            { _id: 'n101', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(50) } },
-            { _id: 'n102', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(20) } },
-            { _id: 'n103', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(5) } },
-            { _id: 'n104', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(35) } },
-            { _id: 'n105', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(40) } },
-            { _id: 'n106', createdAt: 1112222, type: 'NoteTxt', isPinned: false, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(10) } },
-            { _id: 'n107', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(69) } },
-            { _id: 'n10', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(24) } },
-            { _id: 'n108', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(3) } },
-            { _id: 'n10100', createdAt: 1112222, type: 'NoteTxt', isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(59) } },
+            { _id: 'n101', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: false, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(50) }, labels: [] },
+            { _id: 'n102', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(20) }, labels: [] },
+            { _id: 'n103', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(5) }, labels: [] },
+            { _id: 'n104', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: false, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(35) }, labels: [] },
+            { _id: 'n105', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: 'pink' }, info: { title: "This it title", txt: makeLorem(40) }, labels: [] },
+            { _id: 'n106', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: false, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(10) }, labels: [] },
+            { _id: 'n107', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(69) }, labels: [] },
+            { _id: 'n10', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(24) }, labels: [] },
+            { _id: 'n108', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(3) }, labels: [] },
+            { _id: 'n10100', createdAt: 1112222, type: 'NoteTxt', isArchive: false, isBin: false, isPinned: true, style: { backgroundColor: '#00d' }, info: { title: "This it title", txt: makeLorem(59) }, labels: [] },
             // { id: 'n102', createdAt: 1112223, type: 'NoteImg', isPinned: false, info: { url: 'http://some-img/me', title: 'Bobi and Me' }, style: { backgroundColor: '#00d' } },
             // { id: 'n103', createdAt: 1112224, type: 'NoteTodos', isPinned: false, info: { title: 'Get my stuff together', todos: [{ txt: 'Driving license', doneAt: null }, { txt: 'Coding power', doneAt: 187111111 }] } }]
         ]

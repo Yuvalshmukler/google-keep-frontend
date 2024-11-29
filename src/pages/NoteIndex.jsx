@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { loadNotes, addNote, updateNote, removeNote, addNoteMsg } from '../store/actions/note.actions'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { noteService } from '../services/note'
+import { noteService } from '../services/note/note.service.local'
 import { userService } from '../services/user'
 
 import { NoteList } from '../cmps/NoteList'
@@ -17,9 +17,9 @@ export function NoteIndex() {
     const isLoading = useSelector(storeState => storeState.noteModule.isLoading)
 
     useEffect(() => {
-        // loadNotes(filterBy)
         try {
-            loadNotes()
+            loadNotes(filterBy)
+            // loadNotes()
         } catch (err) {
             showErrorMsg('Cannot load notes!')
         }
@@ -52,7 +52,10 @@ export function NoteIndex() {
 
         try {
             const savedNote = await updateNote(note)
-            showSuccessMsg(`Note updated, new speed: ${savedNote}`)
+            console.log('savedNote', savedNote);
+
+            loadNotes()
+            showSuccessMsg(`Note updated ${savedNote}`)
         } catch (err) {
             showErrorMsg('Cannot update note')
         }

@@ -7,6 +7,7 @@ import collabrate from '../../public/svg/collabrate.svg'
 import { ColorPalette } from './ColorPalette';
 import { NoteOptionsModal } from './noteOptionModal';
 import { loadNotes, addNote, updateNote, removeNote, addNoteMsg } from '../store/actions/note.actions'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 
 // import palette from '../../public/svg/palette.svg'
 import { faPalette, faImage, faFileArrowDown, faEllipsisVertical, faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -36,7 +37,8 @@ export function NoteEditor({ onUpdateNote, note }) {
     function onOptionsModalClick(option) {
         switch (option) {
             case 'Delete note':
-                removeNote(note._id)
+                var noteCopy = { ...note, isBin: true }
+                onUpdateNote(noteCopy)
                 break;
 
             case 'Add label':
@@ -48,7 +50,7 @@ export function NoteEditor({ onUpdateNote, note }) {
                 break;
 
             case 'Make a copy':
-                const noteCopy = { ...note }
+                var noteCopy = { ...note }
                 delete noteCopy._id
                 addNote(noteCopy)
                 break;
@@ -58,6 +60,18 @@ export function NoteEditor({ onUpdateNote, note }) {
         }
         setIsOpen(false)
 
+
+    }
+    async function onArchive() {
+        try {
+            
+            const noteToSave = { ...note, isArchive: true }
+            onUpdateNote(noteToSave)
+
+            showSuccessMsg(`Note updated, new speed: ${savedNote}`)
+        } catch (err) {
+            showErrorMsg('Cannot update note')
+        }
 
     }
     return (
@@ -70,7 +84,7 @@ export function NoteEditor({ onUpdateNote, note }) {
                 <img src={palette} />
             </button>
             <button title='Add image'><img src={image1} alt="" /></button>
-            <button title='Archive'><img src={archive} alt="" /></button>
+            <button onClick={onArchive} title='Archive'><img src={archive} alt="" /></button>
             <button
                 title='More'
                 ref={OptionButtonRef}

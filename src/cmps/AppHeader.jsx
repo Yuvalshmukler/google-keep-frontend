@@ -10,7 +10,8 @@ export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
 
-	async function onLogout() {
+	async function onLogout() {	const navigate = useNavigate()
+
 		try {
 			await logout()
 			navigate('/')
