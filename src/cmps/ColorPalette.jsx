@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 
-export function ColorPalette({ onColorClick, isOpen, toggleModal, buttonRef }) {
+export function ColorPalette({ onColorClick, isOpen, toggleModal, colorButtonRef }) {
     const modalRef = useRef(null);
 
     const colors = [
@@ -35,7 +35,7 @@ export function ColorPalette({ onColorClick, isOpen, toggleModal, buttonRef }) {
 
             if (
                 modalRef.current && !modalRef.current.contains(event.target) && // Not modal
-                buttonRef.current && !buttonRef.current.contains(event.target)  // Not button
+                colorButtonRef.current && !colorButtonRef.current.contains(event.target)  // Not button
             ) {
                 console.log('closeeeeeee');
                 toggleModal(null, false)

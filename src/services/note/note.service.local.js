@@ -58,17 +58,9 @@ async function save(note) {
     //         speed: car.speed,
     //     }
     if (note._id) savedNote = await storageService.put(STORAGE_KEY, savedNote)
-    // else {
-    //     const carToSave = {
-    //         vendor: car.vendor,
-    //         price: car.price,
-    //         speed: car.speed,
-    //         // Later, owner is set by the backend
-    //         owner: userService.getLoggedinUser(),
-    //         msgs: []
-    //     }
-    //     savedNote = await storageService.post(STORAGE_KEY, carToSave)
-    // }
+    else {
+        savedNote = await storageService.post(STORAGE_KEY, savedNote)
+    }
     return savedNote
 }
 
