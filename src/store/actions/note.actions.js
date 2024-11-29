@@ -1,10 +1,14 @@
-import { noteService } from '../../services/note'
+import { noteService } from '../../services/note/note.service.local'
 import { store } from '../store'
-import { ADD_NOTE, REMOVE_NOTE, SET_NOTES, SET_NOTE, UPDATE_NOTE, ADD_NOTE_MSG } from '../reducers/note.reducer'
+import { ADD_NOTE, REMOVE_NOTE, SET_NOTES, SET_NOTE, UPDATE_NOTE, SET_IS_LOADING, ADD_NOTE_MSG } from '../reducers/note.reducer'
 
 export async function loadNotes(filterBy) {
     try {
+        store.dispatch({ type: SET_IS_LOADING, isLoading: true })
         const notes = await noteService.query(filterBy)
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+        console.log('notes',notes);
+        
         store.dispatch(getCmdSetnotes(notes))
     } catch (err) {
         console.log('Cannot load notes', err)
@@ -36,6 +40,8 @@ export async function removeNote(noteId) {
 export async function addNote(note) {
     try {
         const savesNote = await noteService.save(note)
+        console.log('savesNote',savesNote);
+        
         store.dispatch(getCmdAddNote(savesNote))
         return savesNote
     } catch (err) {
@@ -45,8 +51,11 @@ export async function addNote(note) {
 }
 
 export async function updateNote(note) {
+    console.log(note);
+    
     try {
         const savedNote = await noteService.save(note)
+        console.log('note',note);
         store.dispatch(getCmdUpdateNote(savedNote))
         return savedNote
     } catch (err) {
@@ -109,7 +118,7 @@ async function unitTestActions() {
     await loadNotes()
     await addNote(noteService.getEmptyNote())
     await updateNote({
-        _id: 'm1oC7',
+        id: 'm1oC7',
         title: 'Note-Good',
     })
     await removeNote('m1oC7')

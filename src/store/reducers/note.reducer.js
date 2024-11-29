@@ -4,10 +4,13 @@ export const REMOVE_NOTE = 'REMOVE_NOTE'
 export const ADD_NOTE = 'ADD_NOTE'
 export const UPDATE_NOTE = 'UPDATE_NOTE'
 export const ADD_NOTE_MSG = 'ADD_NOTE_MSG'
+export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
     notes: [],
-    note: null
+    note: null,
+    isLoading: false,
+
 }
 
 export function noteReducer(state = initialState, action) {
@@ -16,6 +19,8 @@ export function noteReducer(state = initialState, action) {
     switch (action.type) {
         case SET_NOTES:
             newState = { ...state, notes: action.notes }
+            console.log('newState',newState);
+            
             break
         case SET_NOTE:
             newState = { ...state, note: action.note }
@@ -29,12 +34,21 @@ export function noteReducer(state = initialState, action) {
             newState = { ...state, notes: [...state.notes, action.note] }
             break
         case UPDATE_NOTE:
+            console.log('state.notes',action);
             notes = state.notes.map(note => (note._id === action.note._id) ? action.note : note)
+            
             newState = { ...state, notes }
+            // console.log('newState',newState);
+            
             break
         case ADD_NOTE_MSG:
             newState = { ...state, note: { ...state.note, msgs: [...state.note.msgs || [], action.msg] } }
             break
+        case SET_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
+            }
         default:
     }
     return newState

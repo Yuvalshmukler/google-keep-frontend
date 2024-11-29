@@ -79,63 +79,65 @@
     section:nth-of-type(2) {
         border-bottom: 1px solid #dadce0;
         padding: 3px;
-        margin-block-start:4px;
+        margin-block-start: 4px;
         border: none;
+
         button {
             height: 36px;
             width: 35px;
         }
 
-        button:nth-child(1) {
-            background-color: rgb(235, 152, 217);
-        }
+        //     button:nth-child(1) {
+        //         background-color: #eb98d9;
+        //     }
 
-        button:nth-child(2) {
-            background-color: rgb(232, 156, 102);
-        }
+        //     button:nth-child(2) {
+        //         background-color: #e89c66;
+        //     }
 
-        button:nth-child(2) {
-            background-color: rgb(222, 224, 158);
-        }
+        //     button:nth-child(2) {
+        //         background-color: rgb(222, 224, 158);
+        //     }
 
-        button:nth-child(3) {
-            background-color: rgb(183, 225, 162);
-        }
+        //     button:nth-child(3) {
+        //         background-color: rgb(183, 225, 162);
+        //     }
 
-        button:nth-child(4) {
-            background-color: rgb(161, 232, 229);
-        }
+        //     button:nth-child(4) {
+        //         background-color: rgb(161, 232, 229);
+        //     }
 
-        button:nth-child(5) {
-            background-color: rgb(143, 178, 189);
-        }
+        //     button:nth-child(5) {
+        //         background-color: rgb(143, 178, 189);
+        //     }
 
-        button:nth-child(6) {
-            background-color: rgb(191, 149, 188);
-        }
+        //     button:nth-child(6) {
+        //         background-color: rgb(191, 149, 188);
+        //     }
 
-        button:nth-child(7) {
-            background-color: rgb(210, 192, 203);
-        }
+        //     button:nth-child(7) {
+        //         background-color: rgb(210, 192, 203);
+        //     }
 
-        button:nth-child(8) {
-            background-color: rgb(211, 223, 199);
-        }
+        //     button:nth-child(8) {
+        //         background-color: rgb(211, 223, 199);
+        //     }
 
-        button:nth-child(9) {
-            background-color: rgb(224, 224, 225);
-        }
+        //     button:nth-child(9) {
+        //         background-color: rgb(224, 224, 225);
+        //     }
 
-        button:nth-child(10) {
-            background-color: blue;
-        }
+        //     button:nth-child(10) {
+        //         background-color: blue;
+        //     }
 
-        button:nth-child(11) {
-            background-color: blue;
-        }
+        //     button:nth-child(11) {
+        //         background-color: blue;
+        //     }
 
-        button:nth-child(12) {
-            background-color: blue;
-        }
+        //     button:nth-child(12) {
+        //         background-color: blue;
+        //     }
+        // }
     }
 }

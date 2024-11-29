@@ -3,16 +3,17 @@ import { NoteTxt } from '../cmps/NoteTxt'
 import { useState } from 'react';
 import { NoteEditor } from '../cmps/NoteEditor'
 
-export function NotePreview({ note }) {
+export function NotePreview({ note, onUpdateNote }) {
     const [isEditorShown, setIsEditorShown] = useState(false)
 
     function MouseOver(isEditorShown) {
         setIsEditorShown(isEditorShown)
 
     }
+
     return <article style={note.style} onMouseOver={() => MouseOver(true)} onMouseOut={() => MouseOver(false)} className="preview">
-        {<NoteEditor />}
-        <DynamicCmp type={note.type} info={note.info}>
+        {<NoteEditor onUpdateNote={onUpdateNote} note={note} />}
+        <DynamicCmp onUpdateNote={onUpdateNote} type={note.type} info={note.info}>
 
         </DynamicCmp>
 

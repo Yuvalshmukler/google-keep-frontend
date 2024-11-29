@@ -12,19 +12,25 @@ import { NoteList } from '../cmps/NoteList'
 
 export function NoteIndex() {
 
-    const [ filterBy, setFilterBy ] = useState(noteService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const notes = useSelector(storeState => storeState.noteModule.notes)
+    const isLoading = useSelector(storeState => storeState.noteModule.isLoading)
 
     useEffect(() => {
-        loadNotes(filterBy)
+        // loadNotes(filterBy)
+        try {
+            loadNotes()
+        } catch (err) {
+            showErrorMsg('Cannot load notes!')
+        }
         console.log(notes);
-        
+
     }, [filterBy])
 
     async function onRemoveNote(noteId) {
         try {
             await removeNote(noteId)
-            showSuccessMsg('Note removed')            
+            showSuccessMsg('Note removed')
         } catch (err) {
             showErrorMsg('Cannot remove note')
         }
@@ -38,32 +44,36 @@ export function NoteIndex() {
             showSuccessMsg(`Note added (id: ${savedNote._id})`)
         } catch (err) {
             showErrorMsg('Cannot add note')
-        }        
+        }
     }
 
     async function onUpdateNote(note) {
-        const speed = +prompt('New speed?', note.speed)
-        if(speed === 0 || speed === note.speed) return
+        console.log(note);
 
-        const noteToSave = { ...note, speed }
         try {
-            const savedNote = await updateNote(noteToSave)
-            showSuccessMsg(`Note updated, new speed: ${savedNote.speed}`)
+            const savedNote = await updateNote(note)
+            showSuccessMsg(`Note updated, new speed: ${savedNote}`)
         } catch (err) {
             showErrorMsg('Cannot update note')
-        }        
+        }
     }
 
     return (
+
         <main className="note-index">
             <header>
                 <h2>Notes</h2>
                 {userService.getLoggedinUser() && <button onClick={onAddNote}>Add a Note</button>}
             </header>
-            <NoteList 
+            {!isLoading ? <NoteList
                 notes={notes}
-                onRemoveNote={onRemoveNote} 
-                onUpdateNote={onUpdateNote}/>
+                onRemoveNote={onRemoveNote}
+                onUpdateNote={onUpdateNote}
+            /> :
+                <div>
+                    Loading...
+                </div>
+            }
         </main>
     )
 }

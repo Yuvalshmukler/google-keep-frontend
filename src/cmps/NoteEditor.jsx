@@ -7,30 +7,35 @@ import collabrate from '../../public/svg/collabrate.svg'
 import { ColorPalette } from './ColorPalette';
 // import palette from '../../public/svg/palette.svg'
 import { faPalette, faImage, faFileArrowDown, faEllipsisVertical, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-export function NoteEditor() {
+export function NoteEditor({ onUpdateNote, note }) {
     // const count = useSelector(storeState => storeState.userModule.count)
     const [isOpen, setIsOpen] = useState(false)
     const [modalType, setModalType] = useState(null)
 
-    function onClick(isOpen, modalType) {
-        setIsOpen(isOpen)
+    function onClick(modalType) {
+        setIsOpen((prevState => !prevState))
         console.log('isOpen', isOpen);
         setModalType(modalType)
-        console.log('setModalType', modalType);
 
     }
+    function onClickColor(color) {
+        console.log('color', color);
+        const noteToSave = { ...note, style: { backgroundColor: color } }
+        console.log('noteToSave', noteToSave);
+        onUpdateNote(noteToSave)
 
+    }
     return (
         <section className="note-editor">
             <button><img src={collabrate} alt="" /></button>
             <button
-                onClick={() => onClick(true, 'color')}>
+                onClick={() => onClick('color')}>
                 <img src={palette} />
             </button>
             <button><img src={image1} alt="" /></button>
             <button><img src={archive} alt="" /></button>
             <button><FontAwesomeIcon icon={faEllipsisVertical} /></button>
-            {isOpen && modalType === 'color' && <ColorPalette />}
+            {isOpen && modalType === 'color' && <ColorPalette onClickColor={onClickColor} />}
         </section>
     )
 }
