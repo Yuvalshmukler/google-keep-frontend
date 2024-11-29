@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import palette from '../../public/svg/palette.svg'
 import image1 from '../../public/svg/image1.svg'
@@ -11,14 +11,17 @@ export function NoteEditor({ onUpdateNote, note }) {
     // const count = useSelector(storeState => storeState.userModule.count)
     const [isOpen, setIsOpen] = useState(false)
     const [modalType, setModalType] = useState(null)
+    const buttonRef = useRef(null)
 
-    function onClick(modalType) {
-        setIsOpen((prevState => !prevState))
+    function toggleModal(modalType, isModalOpen) {
+        console.log('isModalOpen', isModalOpen);
+        !isModalOpen ? setIsOpen((prevState => !prevState)) : setIsOpen(isModalOpen)
+        // setIsOpen(isModalOpen)
         console.log('isOpen', isOpen);
         setModalType(modalType)
 
     }
-    function onClickColor(color) {
+    function onColorClick(color) {
         console.log('color', color);
         const noteToSave = { ...note, style: { backgroundColor: color } }
         console.log('noteToSave', noteToSave);
@@ -29,13 +32,15 @@ export function NoteEditor({ onUpdateNote, note }) {
         <section className="note-editor">
             <button><img src={collabrate} alt="" /></button>
             <button
-                onClick={() => onClick('color')}>
+                title='Background options'
+                ref={buttonRef}
+                onClick={() => toggleModal('color')}>
                 <img src={palette} />
             </button>
-            <button><img src={image1} alt="" /></button>
-            <button><img src={archive} alt="" /></button>
-            <button><FontAwesomeIcon icon={faEllipsisVertical} /></button>
-            {isOpen && modalType === 'color' && <ColorPalette onClickColor={onClickColor} />}
+            <button title='Add image'><img src={image1} alt="" /></button>
+            <button title='Archive'><img src={archive} alt="" /></button>
+            <button title='More'><FontAwesomeIcon icon={faEllipsisVertical} /></button>
+            {isOpen && modalType === 'color' && <ColorPalette buttonRef={buttonRef} isOpen={isOpen} onColorClick={onColorClick} toggleModal={toggleModal} />}
         </section>
     )
 }

@@ -1,6 +1,9 @@
 import { useSelector } from 'react-redux'
+import { useState, useRef, useEffect } from 'react'
 
-export function ColorPalette({ onClickColor }) {
+export function ColorPalette({ onColorClick, isOpen, toggleModal, buttonRef }) {
+    const modalRef = useRef(null);
+
     const colors = [
         '#FF6F61',
         '#6B5B95',
@@ -27,17 +30,39 @@ export function ColorPalette({ onClickColor }) {
         '#B565A7',
         '#5B8C5A',
     ];
+    useEffect(() => {
+        function handleClickOutside(event) {
 
+            if (
+                modalRef.current && !modalRef.current.contains(event.target) && // Not modal
+                buttonRef.current && !buttonRef.current.contains(event.target)  // Not button
+            ) {
+                console.log('closeeeeeee');
+                toggleModal(null, false)
+                // Close modal if clicked outside
+            }
+        }
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
     // const count = useSelector(storeState => storeState.userModule.count)
 
     return (
-        <section className="ColorPalette">
+        <section ref={modalRef} className="ColorPalette">
             <section>
                 {colors.map((color) => (
                     <button
                         key={color}
                         style={{ backgroundColor: color }}
-                        onClick={(event) => onClickColor(color)}
+                        onClick={(event) => onColorClick(color)}
                     >
                     </button>
                 ))}
@@ -47,7 +72,7 @@ export function ColorPalette({ onClickColor }) {
                     <button
                         key={color}
                         style={{ backgroundColor: color }}
-                        onClick={(event) => onClickColor(event, color)}
+                        onClick={(event) => onColorClick(event, color)}
                     >
                     </button>
                 ))}

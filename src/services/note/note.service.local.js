@@ -57,7 +57,7 @@ async function save(note) {
     //         price: car.price,
     //         speed: car.speed,
     //     }
-    if (note.id) savedNote = await storageService.put(STORAGE_KEY, savedNote)
+    if (note._id) savedNote = await storageService.put(STORAGE_KEY, savedNote)
     // else {
     //     const carToSave = {
     //         vendor: car.vendor,
