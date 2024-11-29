@@ -6,14 +6,16 @@
         border: 1px solid transparent;
         border-radius: 8px;
         max-width: 718px;
+        padding: rem(12px);
+
         img {
-            margin-inline: rem(15px) rem(15px);
-           color: rgb(95, 99, 104);
+            margin-inline: rem(5px) rem(15px);
+            color: rgb(95, 99, 104);
             // padding: 4px;
         }
-        
+
         input {
-            padding: rem(4px);
+
             background: #f1f3f4;
             font-size: rem(16px);
             border: none;

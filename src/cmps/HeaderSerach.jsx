@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
+import search from '../../public/svg/search.svg'
 
 export function HeaderSearch() {
     // const [filterToEdit, setFilterToEdit] = useState()
@@ -28,7 +29,7 @@ export function HeaderSearch() {
     return (
         <section className="header-search">
             <form action="form-search">
-                <img src='../../public/svg/LOGO.png' alt="" />
+                <img src={search} alt="" />
                 <input
                     type="text"
                     name='txt'

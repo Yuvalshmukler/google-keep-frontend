@@ -8,7 +8,7 @@ import { ColorPalette } from './ColorPalette';
 import { NoteOptionsModal } from './noteOptionModal';
 import { loadNotes, addNote, updateNote, removeNote, addNoteMsg } from '../store/actions/note.actions'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-
+import { ImgUploader } from './ImgUploader';
 // import palette from '../../public/svg/palette.svg'
 import { faPalette, faImage, faFileArrowDown, faEllipsisVertical, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 export function NoteEditor({ onUpdateNote, note }) {
@@ -64,7 +64,7 @@ export function NoteEditor({ onUpdateNote, note }) {
     }
     async function onArchive() {
         try {
-            
+
             const noteToSave = { ...note, isArchive: true }
             onUpdateNote(noteToSave)
 
@@ -83,7 +83,9 @@ export function NoteEditor({ onUpdateNote, note }) {
                 onClick={() => toggleModal('color')}>
                 <img src={palette} />
             </button>
-            <button title='Add image'><img src={image1} alt="" /></button>
+            <button title='Add image'>
+                <ImgUploader></ImgUploader>
+            </button>
             <button onClick={onArchive} title='Archive'><img src={archive} alt="" /></button>
             <button
                 title='More'
