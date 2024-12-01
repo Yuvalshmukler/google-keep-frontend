@@ -1,17 +1,28 @@
 .note-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    // display: grid;
     // display: flex;
     //    flex-wrap: wrap;
     // display: inline-block;
+    column-count:7;
+    // grid-template-columns: auto;
+    /* Adjust for the desired number of columns */
+    column-gap: 16px;
+    // column-fill: auto;
+    /* Space between columns */
     font-family: Roboto Regular;
-    gap: 30px;
+    gap: 24px;
 
     // font-size: 15px;
     .preview {
         background-color: rgb(222, 220, 220);
-        width: 250px;
+        width: rem(241px);
         font-size: rem(15px);
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 16px;
+        break-inside: avoid;
+        padding: 16px;
     }
 
     h2 {
