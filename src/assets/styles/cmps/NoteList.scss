@@ -1,57 +1,35 @@
 .note-list {
-    // display: grid;
-    // display: flex;
-    //    flex-wrap: wrap;
-    // display: inline-block;
-    column-count:7;
-    // grid-template-columns: auto;
-    /* Adjust for the desired number of columns */
     column-gap: 16px;
-    // column-fill: auto;
-    /* Space between columns */
     font-family: Roboto Regular;
-    gap: 24px;
+    max-width: 100%;
 
-    // font-size: 15px;
     .preview {
         background-color: rgb(222, 220, 220);
-        width: rem(241px);
-        font-size: rem(15px);
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-bottom: 16px;
         break-inside: avoid;
         padding: 16px;
+        width: 100%;
+        font-size: rem(15px);
+      
+        @include for-narrow-layout {
+            width: rem(241px);
+        }
+
+
+        // @include for-narrow-layout {
+        //     column-count: 2
+        // }
+
+        // font-size: 15px;
+
     }
 
     h2 {
         font-size: rem(17px);
         font-weight: 400;
         color: #000000;
-        // bold
     }
-
-    // display: flex;
-    // flex-direction: row;
-    // gap: 1rem;
-    // flex-wrap:wrap;
-    // grid-auto-rows: auto;
-    // grid-template-rows: masonry;
-    // li {
-    //     display: grid;
-    //     grid-template-columns: max-content auto;
-    //     padding: .5em;
-    //     background-color: $clr2;
-
-    //     color: $clr6;
-
-    //     .actions {
-    //         justify-self: end;
-
-    //         button {
-    //             padding: .3em .5em;
-    //         }
-    //     }
-    // }
 }

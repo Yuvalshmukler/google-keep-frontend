@@ -15,7 +15,7 @@ export function NoteIndex() {
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter())
     const notes = useSelector(storeState => storeState.noteModule.notes)
     const isLoading = useSelector(storeState => storeState.noteModule.isLoading)
-
+    // const [columns, setColumns] = useState(null)
     useEffect(() => {
         try {
             loadNotes(filterBy)
