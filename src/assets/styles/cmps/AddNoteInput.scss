@@ -1,23 +1,59 @@
 .add-note-input {
-    display: flex;
+    // display: flex;
     align-self: center;
 
-    section {
-        padding-inline: rem(17px);
-        padding-block: rem(9px);
-        -webkit-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 0px 4px -1px rgba(0, 0, 0, 0.75);
-        border-radius: 8px;
-        min-width: rem(600px);
+    // padding-block: rem(9px);
+    -moz-box-shadow: 0px 1px 7px -1px rgba(97, 97, 97, 1);
+    box-shadow: 0px 1px 7px -1px rgba(97, 97, 97, 1);
+    border-radius: 8px;
+    min-width: rem(300px);
 
+    @include for-normal-layout {
+        min-width: rem(600px);
+    }
+
+
+
+    .add-note-expand {
     }
 
     .add-note-narrow {
-        min-height: rem(44px);
-    }
+        padding-inline: rem(17px);
+        min-height: rem(46px);
+        display: flex;
+        justify-content: space-between;
+        position: relative;
 
-    .add-note-expand {
-        min-height: rem(135px);
+        .note-input {
+            flex-basis: 70%;
+            font-size: rem(16px);
+            font-family: Roboto Regular;
+        }
+
+        .active-btns {
+            display: flex;
+            justify-content: flex-end;
+            flex-basis: 30%;
+            height: 100%;
+            right: rem(17px);
+            align-items: center;
+            gap: rem(24px);
+            position: absolute;
+           
+
+
+            img {
+                height: 24px;
+                width: 24px;
+            }
+
+            img:hover {
+                border-radius: 50%;
+                //    margin-inline: 18px;
+                background-color: rgba(95, 99, 104, 0.157);
+                // height: 100%;
+                padding: 20px;
+            }
+        }
     }
 }

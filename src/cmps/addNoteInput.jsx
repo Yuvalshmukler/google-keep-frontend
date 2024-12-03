@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { AddNoteExpand } from './addNoteExpand'
+import { AddNoteNarrow } from './addNoteNarrow'
 
 export function AddNoteInput() {
     const count = useSelector(storeState => storeState.userModule.count)
@@ -14,6 +16,8 @@ export function AddNoteInput() {
     })
 
     function onExpand() {
+        console.log('hey expandddd');
+
         setIsExpand(true)
     }
     return (
@@ -21,9 +25,9 @@ export function AddNoteInput() {
             {isShown &&
                 <div>
                     {isExpand ?
-                        <section className='add-note-expand'>hey!</section>
+                        <AddNoteExpand />
                         :
-                        <section className='add-note-narrow' onClick={onExpand}>hey</section>
+                        <AddNoteNarrow onExpand={onExpand} />
                     }
                 </div>}
         </section>
