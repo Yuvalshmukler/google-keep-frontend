@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { NoteEditor } from './NoteEditor'
 import { loadNotes, addNote, updateNote, removeNote, addNoteMsg } from '../store/actions/note.actions'
 import { noteService } from '../services/note/note.service.local'
-export function AddNoteExpand() {
+import { useClickOutside } from '../customHooks/useClickOutside'
+
+export function AddNoteExpand({ onToggleExpand }) {
     const [noteToAdd, setNoteToAdd] = useState(noteService.getDefaultNote())
+    const modalRef = useRef();
 
-    useEffect(() => {
+    useClickOutside(modalRef, () => {
+        onToggleExpand(false);
+    });
 
-    })
     function handleChange(ev) {
         const type = ev.target.type
         const field = ev.target.name
@@ -20,7 +24,7 @@ export function AddNoteExpand() {
                     ...prevNote,
                     info: {
                         ...prevNote.info,
-                        [field]: value, // Dynamically update `title` or `txt`
+                        [field]: value,
                     },
                 }));
             case 'radio':
@@ -39,9 +43,11 @@ export function AddNoteExpand() {
     function onAddNote() {
         addNote(noteToAdd)
 
+        onToggleExpand(false)
     }
+
     return (
-        <section className="add-note-expand">
+        <section ref={modalRef} className="add-note-expand">
             <form>
                 <input name="title" onChange={handleChange}
                     type="text" placeholder='Title' />

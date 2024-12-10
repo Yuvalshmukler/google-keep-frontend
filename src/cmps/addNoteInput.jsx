@@ -5,7 +5,6 @@ import { AddNoteExpand } from './addNoteExpand'
 import { AddNoteNarrow } from './addNoteNarrow'
 
 export function AddNoteInput() {
-    const count = useSelector(storeState => storeState.userModule.count)
     const [isExpand, setIsExpand] = useState(false)
     const location = useLocation()
     const isShown = location.pathname === '/'
@@ -15,19 +14,19 @@ export function AddNoteInput() {
 
     })
 
-    function onExpand() {
+    function onToggleExpand(isExpand) {
         console.log('hey expandddd');
 
-        setIsExpand(true)
+        setIsExpand(isExpand)
     }
     return (
         <section className="add-note-input">
             {isShown &&
                 <div>
                     {isExpand ?
-                        <AddNoteExpand />
+                        <AddNoteExpand onToggleExpand={onToggleExpand} />
                         :
-                        <AddNoteNarrow onExpand={onExpand} />
+                        <AddNoteNarrow onToggleExpand={onToggleExpand} />
                     }
                 </div>}
         </section>
