@@ -6,15 +6,16 @@
     line-height: 1.5rem;
     min-height: rem(100px);
     border-radius: rem(10px);
-    padding: rem(12px) rem(16px);
-    // max-width: rem(241px);
-    height: max-content;
-    gap: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    break-inside: avoid;
+    padding: 16px;
+    width: 100%;
+    font-size: rem(15px);
     position: relative;
-
-    section:nth-of-type(2){
-        // background-color: antiquewhite;
+    section:nth-of-type(2) {
         margin-block-end: rem(40px);
     }
-        
+
 }

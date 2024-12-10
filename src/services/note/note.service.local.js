@@ -11,7 +11,8 @@ export const noteService = {
     save,
     remove,
     addCarMsg,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultNote
 }
 window.cs = noteService
 
@@ -19,7 +20,7 @@ async function query(filterBy = getDefaultFilter()) {
     var notes = await storageService.query(STORAGE_KEY)
     console.log(notes);
     console.log(filterBy);
-    
+
     // const { createdAt, type, isArchive, isPinned, sortField, sortDir } = filterBy
 
     notes = notes.filter(note => note.isArchive === filterBy.isArchive)
@@ -96,7 +97,18 @@ function getDefaultFilter() {
         sortDir: '',
     }
 }
-
+function getDefaultNote() {
+    return {
+        createdAt: '',
+        type: 'NoteTxt',
+        isArchive: false,
+        isBin: false,
+        isPinned: false,
+        style:{backgroundColor:'white'},
+        info: {title:'',txt:''},
+        labels:[]
+    }
+}
 function createNotes() {
     var notes = storageService.getFromLocal(STORAGE_KEY)
     if (!notes) {

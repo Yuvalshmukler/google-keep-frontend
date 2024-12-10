@@ -2,21 +2,7 @@
     column-gap: 16px;
     font-family: Roboto Regular;
     max-width: 100%;
-    .preview {
-        background-color: rgb(222, 220, 220);
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 16px;
-        break-inside: avoid;
-        padding: 16px;
-        width: 100%;
-        font-size: rem(15px);
-        
-        @include for-narrow-layout {
-            width: rem(241px);
-        }
-    }
+    columns: 240px auto;
     h2 {
         font-size: rem(17px);
         font-weight: 400;

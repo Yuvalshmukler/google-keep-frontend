@@ -5,10 +5,16 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote }) {
   const [columns, setColumns] = useState(null);
 
   const setDynamicColumns = () => {
-    const viewportWidth = window.innerWidth - 100;
-    const minColumnWidth = 240
-    const newColumns = Math.floor(viewportWidth / (minColumnWidth + 20))
-    viewportWidth + 100 < 610 ? setColumns(1) : setColumns(newColumns)
+    // const viewportWidth = window.innerWidth - 100;
+    // console.log('viewportWidth',viewportWidth);
+    
+    // const minColumnWidth = 241
+    // console.log('minColumnWidth',minColumnWidth);
+    
+    // const newColumns = Math.floor(viewportWidth / (minColumnWidth + 20))
+    // console.log('newColumns',newColumns);
+    
+    // viewportWidth + 100 < 610 ? setColumns(1) : setColumns(newColumns)
   }
 
   useEffect(() => {
@@ -22,7 +28,21 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote }) {
 
   return (
     <section>
-      {columns && (
+      {(
+        <ul
+          className="note-list"
+          style={{
+            // columnCount: columns,
+          }}
+        >
+          {notes.map((note) => (
+            <li key={note._id}>
+              <NotePreview onUpdateNote={onUpdateNote} note={note} />
+            </li>
+          ))}
+        </ul>
+      )}
+      {/* {columns && (
         <ul
           className="note-list"
           style={{
@@ -30,12 +50,12 @@ export function NoteList({ notes, onRemoveNote, onUpdateNote }) {
           }}
         >
           {notes.map((note) => (
-            <li key={note._id} style={{ breakInside: 'avoid' }}>
+            <li key={note._id}>
               <NotePreview onUpdateNote={onUpdateNote} note={note} />
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </section>
   );
 }

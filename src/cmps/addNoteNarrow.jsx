@@ -12,9 +12,9 @@ export function AddNoteNarrow({ onExpand }) {
         <section onClick={onExpand} className="add-note-narrow">
             <input className='note-input' type="text" placeholder='Take a note...' />
                 <div className='active-btns'>
-                    <img src={check} alt="" srcset="" />
-                    <img src={searchPencil} alt="" srcset="" />
-                    <img src={addImg} alt="" srcset="" />
+                    <img src={check} alt=""/>
+                    <img src={searchPencil} alt=""/>
+                    <img src={addImg} alt=""/>
                 </div>
         </section>
     )
