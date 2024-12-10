@@ -4,7 +4,7 @@ export function useClickOutside(ref, onOutsideClick) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        onOutsideClick();
+        onOutsideClick(event);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);

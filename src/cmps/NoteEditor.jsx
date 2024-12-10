@@ -18,21 +18,19 @@ export function NoteEditor({ onUpdateNote, note }) {
     const colorButtonRef = useRef(null)
     const OptionButtonRef = useRef(null)
 
-    function toggleModal(modalType, isModalOpen) {
-        console.log('modalType', modalType);
-        !isModalOpen ? setIsOpen((prevState => !prevState)) : setIsOpen(isModalOpen)
-        // setIsOpen(isModalOpen)
-        console.log('isOpen', isOpen);
+    function toggleModal(ev, modalType, isModalOpen) {
+        ev.preventDefault()
+        console.log('isOpen', !isOpen)
+        console.log('isModalOpen', isModalOpen)
+        console.log('modalType', modalType)
+        setIsOpen((prevState => !prevState))
+        // !isModalOpen ? setIsOpen(isModalOpen) : setIsOpen((prevState => !prevState))
         setModalType(modalType)
-
     }
     function onColorClick(color) {
-        console.log('color', color);
         const noteToSave = { ...note, style: { backgroundColor: color } }
-        console.log('noteToSave', noteToSave);
         onUpdateNote(noteToSave)
         setIsOpen(false)
-
     }
     function onOptionsModalClick(option) {
         switch (option) {
@@ -80,7 +78,7 @@ export function NoteEditor({ onUpdateNote, note }) {
             <button
                 title='Background options'
                 ref={colorButtonRef}
-                onClick={() => toggleModal('color')}>
+                onClick={(ev) => toggleModal(ev, 'color')}>
                 <img src={palette} />
             </button>
             <button title='Add image'>
@@ -90,7 +88,7 @@ export function NoteEditor({ onUpdateNote, note }) {
             <button
                 title='More'
                 ref={OptionButtonRef}
-                onClick={() => toggleModal('more')}>
+                onClick={(ev) => toggleModal(ev, 'more')}>
                 <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
             {isOpen && modalType === 'color' && <ColorPalette colorButtonRef={colorButtonRef} isOpen={isOpen} onColorClick={onColorClick} toggleModal={toggleModal} />}

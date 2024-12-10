@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -7,10 +8,23 @@ import { HeaderSearch } from './HeaderSerach'
 import menu from '../../public/svg/menu.svg'
 
 export function AppHeader() {
+	const headerRef = useRef(null)
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
 
-	async function onLogout() {	const navigate = useNavigate()
+	useEffect(() => {
+		const handleScroll = () => {
+			headerRef.current.classList.add('scrolled')
+			if (window.scrollY === 0) headerRef.current.classList.remove('scrolled')
+		}
+
+		window.addEventListener('scroll', handleScroll);
+
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, [])
+
+	async function onLogout() {
+		const navigate = useNavigate()
 
 		try {
 			await logout()
@@ -22,7 +36,7 @@ export function AppHeader() {
 	}
 
 	return (
-		<header className="app-header full">
+		<header ref={headerRef} className="app-header full">
 			<div className='menu-logo-container'>
 				<img className='menu' src={menu} alt="" />
 				<NavLink to="/" className="logo">
@@ -31,28 +45,7 @@ export function AppHeader() {
 				</NavLink>
 			</div>
 			<HeaderSearch />
-			<nav>
-				<NavLink to="about">About</NavLink>
-				{/* <NavLink to="car">Cars</NavLink> */}
-				<NavLink to="chat">Chat</NavLink>
-				<NavLink to="review">Review</NavLink>
-
-				{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
-
-				{!user && <NavLink to="login" className="login-link">Login</NavLink>}
-				{user && (
-					<div className="user-info">
-						<Link to={`user/${user._id}`}>
-							{/* {user.imgUrl && <img src={user.imgUrl} />} */}
-							{user.fullname}
-						</Link>
-						{/* <span className="score">{user.score?.toLocaleString()}</span> */}
-						<button onClick={onLogout}>logout</button>
-					</div>
-				)}
-			</nav>
-
-
+		
 		</header>
 	)
 }

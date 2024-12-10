@@ -1,7 +1,12 @@
 import { useSelector } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
+import { useClickOutside } from '../customHooks/useClickOutside'
+
 export function ColorPalette({ onColorClick, isOpen, toggleModal, colorButtonRef }) {
     const modalRef = useRef(null);
+    useClickOutside(modalRef, (ev) => {
+        toggleModal(ev,'color', false)
+    });
 
     const colors = [
         '#faafa8',
@@ -29,31 +34,7 @@ export function ColorPalette({ onColorClick, isOpen, toggleModal, colorButtonRef
         '#B565A7',
         '#5B8C5A',
     ];
-    useEffect(() => {
-        function handleClickOutside(event) {
-
-            if (
-                modalRef.current && !modalRef.current.contains(event.target) && // Not modal
-                colorButtonRef.current && !colorButtonRef.current.contains(event.target)  // Not button
-            ) {
-                console.log('closeeeeeee');
-                toggleModal(null, false)
-                // Close modal if clicked outside
-            }
-        }
-
-        if (isOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        } else {
-            document.removeEventListener('mousedown', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-    // const count = useSelector(storeState => storeState.userModule.count)
-
+    
     return (
         <section ref={modalRef} className="ColorPalette">
             <section>
@@ -61,7 +42,7 @@ export function ColorPalette({ onColorClick, isOpen, toggleModal, colorButtonRef
                     <button
                         key={color}
                         style={{ backgroundColor: color }}
-                        onClick={(event) => onColorClick(color)}
+                        onClick={() => onColorClick(color)}
                     >
                     </button>
                 ))}

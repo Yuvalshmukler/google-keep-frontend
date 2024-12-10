@@ -10,7 +10,7 @@ export function AddNoteExpand({ onToggleExpand }) {
 
     useClickOutside(modalRef, () => {
         onToggleExpand(false);
-    });
+    })
 
     function handleChange(ev) {
         const type = ev.target.type
